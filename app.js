@@ -1,35 +1,40 @@
-// const dateOfBirth = document.querySelector("#date-of-birth");
-// const luckyNumber = document.querySelector("#lucky-number");
-// const btnCheck = document.querySelector("#check-number");
-// const outputMessage = document.querySelector("#opt-message");
-
 const dateOfBirth = document.querySelector("#date-of-birth");
 const luckyNumber = document.querySelector("#lucky-number");
-const checkNumberButton = document.querySelector("#check-number");
+const btnCheck = document.querySelector("#check-btn");
+const outputMessage = document.querySelector("#opt-message");
 
-checkNumberButton.addEventListener('click',function getValues(){
-  console.log(dateOfBirth.value,luckyNumber.value);
-})
 
 btnCheck.addEventListener("click", function clickEventHandler(){
-    var birthdate = dateOfBirth.value.replaceAll('-','')
-    var sum =0
-    for(i=0;birthdate.length;i++){
-        sum = sum + birthdate[i]
-    checkLuckyUnlucky(sum)
-    }
-})
-
-function checkLuckyUnlucky(totalSum){
-    if(totalSum%luckyNumber.value === 0){
-        showMessage( luckyNumber.value + "is a lucky number!! 🥳🥳🥳")
+    const date = dateOfBirth.value
+    const numberToCheck = luckyNumber.value
+    if(date && numberToCheck){
+        var sumOfDate =  calculateSum(date)
+        checkLuckyUnlucky(sumOfDate, numberToCheck)
     }else{
-        showMessage(luckyNumber.value + "is not lucky number!! 😞😞")
+        showMessage("Please enter both the fields")
+    }
+    }
+)
+
+function calculateSum(date){
+    let sum = 0
+    date = date.replaceAll('-','')
+    for(let digit of date){
+        sum = sum + Number(digit);
+
+    }
+    return sum
+
+}
+function checkLuckyUnlucky(sumOfDate, numberToCheck){
+    if(sumOfDate % numberToCheck === 0){
+        showMessage("your birthday is lucky !! 🥳🥳🥳")
+    }else{
+        showMessage("your birthday is NOT lucky, so sad !! 😞😞")
     }
 }
 
-function showMessage(message){
-    message.style.display = "block";
-    message.innerText = message
+function showMessage(msg){
+    outputMessage.innerText = msg
 
 }
