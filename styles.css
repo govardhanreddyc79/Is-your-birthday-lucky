@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
 :root {
     --primary-color:black;
-    --bg-color:#EF4444
+    --bg-color: #F87171;
 }
 .container {
     display: flex;
@@ -13,6 +13,7 @@ body {
     /* text-align: center; */
     font-family:'Source Serif Pro', serif;
     background-color:var(--bg-color);
+    background-image: images/party.svg;
     
 }
 .heading {
