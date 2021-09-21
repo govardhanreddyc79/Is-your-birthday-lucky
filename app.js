@@ -8,11 +8,17 @@ btnCheck.addEventListener("click", function clickEventHandler(){
     const date = dateOfBirth.value
     const numberToCheck = luckyNumber.value
     if(date && numberToCheck){
-        var sumOfDate =  calculateSum(date)
-        checkLuckyUnlucky(sumOfDate, numberToCheck)
-    }else{
-        showMessage("Please enter both the fields")
+        if(numberToCheck>0)
+        {
+            var sumOfDate =  calculateSum(date)
+            checkLuckyUnlucky(sumOfDate, numberToCheck)
+        }else{
+            showMessage("The input values should be positive")
+        }
     }
+    else{
+        alert("Please enter both the fields")
+        }
     }
 )
 
